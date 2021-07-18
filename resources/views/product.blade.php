@@ -1,6 +1,6 @@
 @extends('master')
 @section('content')
-<div class="custom-login">
+<div class="custom-product">
 
     <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
         <div class="carousel-indicators">

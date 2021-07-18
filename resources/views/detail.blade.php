@@ -16,9 +16,21 @@
                 <h4>Category : {{ $product['category'] }}</h4>
                 <h5>Detail : {{ $product['description'] }}</h5>
                 <div>
-                    <button class="btn btn-primary">Add to Cart</button>
-                    <button class="btn btn-warning">Buy Now</button>
-                    <a href="/" class="btn btn-danger" role="button">back</a>
+                    <ul class="list-group list-group-horizontal">
+                        <li class="list-group m-1">
+                            <form action="/add_to_cart" method="POST">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{ $product['id'] }}">
+                                <button class="btn btn-primary">Add to Cart</button>
+                            </form>
+                        </li>
+                        <li class="list-group m-1">
+                            <button class="btn btn-warning">Buy Now</button>
+                        </li>
+                        <li class="list-group m-1">
+                            <a href="/" class="btn btn-danger" role="button">back</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

@@ -20,7 +20,10 @@
 </body>
 <style>
     .custom-login{
-        /* height: 600px; */
+        height: 650px;
+        padding-top: 150px;
+    }
+    .custom-product{
         padding-top: 150px;
     }
     .custom-search{
