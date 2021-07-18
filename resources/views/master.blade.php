@@ -23,6 +23,10 @@
         /* height: 600px; */
         padding-top: 150px;
     }
+    .custom-search{
+        /* height: 600px; */
+        padding-top: 80px;
+    }
     img.slider-img{
         height: 400px !important
     }
@@ -39,6 +43,9 @@
     .detail-img{
         margin-top: 200px;
         height: 200px;
+    }
+    .search-box{
+        width: 500px !important
     }
 </style>
 </html>

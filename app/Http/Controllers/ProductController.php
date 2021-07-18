@@ -20,4 +20,11 @@ class ProductController extends Controller
 
         return view('detail', ['product' => $data]);
     }
+
+    function search(Request $request)
+    {
+        $data = Product::where('name', 'like', '%' . $request->input('query') . '%')->get();
+
+        return view('search', ['products' => $data]);
+    }
 }
