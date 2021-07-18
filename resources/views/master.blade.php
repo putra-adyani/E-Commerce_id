@@ -33,5 +33,12 @@
         float: left;
         width: 20%;
     }
+    .detail-wrapper{
+        height: 600px;
+    }
+    .detail-img{
+        margin-top: 200px;
+        height: 200px;
+    }
 </style>
 </html>
