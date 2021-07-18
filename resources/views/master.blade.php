@@ -26,5 +26,12 @@
     img.slider-img{
         height: 400px !important
     }
+    .trending-img{
+        height: 100px;
+    }
+    .trending-item{
+        float: left;
+        width: 20%;
+    }
 </style>
 </html>

@@ -29,6 +29,21 @@
         </button>
     </div>
 
+    <div class="container mt-4">
+        <div class="trending-wrapper">
+            <h3>Trending Product</h3>
+            <div class="carousel-inner">
+                @foreach ($products as $p)
+                    <div class="trending-item" data-bs-interval="10000">
+                        <img src="{{ $p['gallery'] }}" class="trending-img" alt="{{ $p['name'] }}">
+                        <div class="">
+                            <p>{{ $p['name'] }}</p>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
 
 </div>
 
