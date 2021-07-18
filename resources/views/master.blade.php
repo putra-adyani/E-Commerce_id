@@ -23,5 +23,8 @@
         /* height: 600px; */
         padding-top: 150px;
     }
+    img.slider-img{
+        height: 400px !important
+    }
 </style>
 </html>
