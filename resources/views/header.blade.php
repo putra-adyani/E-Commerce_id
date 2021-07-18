@@ -30,7 +30,7 @@ if (Session::has('user')) {
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
             <ul class="nav navbar-nav">
-                <li><a href="#" class="nav-link">cart({{ $total }})</a></li>
+                <li><a href="/cartlist" class="nav-link">cart({{ $total }})</a></li>
                 @if (Session::has('user'))
                     <li><a href="/logout" class="nav-link">Logout</a></li>
                 @else
