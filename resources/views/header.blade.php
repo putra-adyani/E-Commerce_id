@@ -20,7 +20,7 @@ if (Session::has('user')) {
                 <a class="nav-link active" aria-current="page" href="/">Home</a>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">Orders</a>
+                <a class="nav-link" href="/myorders">Orders</a>
                 </li>
             </ul>
             <form action="/search" class="d-flex">
@@ -35,6 +35,7 @@ if (Session::has('user')) {
                     <li><a href="/logout" class="nav-link">Logout</a></li>
                 @else
                     <li><a href="/login" class="nav-link">Login</a></li>
+                    <li><a href="/register" class="nav-link">Register</a></li>
                 @endif
             </ul>
         </div>

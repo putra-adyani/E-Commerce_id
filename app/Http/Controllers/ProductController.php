@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\Order;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 
@@ -40,6 +41,16 @@ class ProductController extends Controller
             $cart->product_id = $request->product_id;
             $cart->save();
 
+            $order = new Order;
+            $order->user_id = $request->session()->get('user')['id'];
+            $order->product_id = $request->product_id;
+            $order->cart_id = $cart->id;
+            $order->status = $request->status;
+            $order->payment_method = $request->payment_method;
+            $order->payment_status = $request->payment_status;
+            $order->address = $request->address;
+            $order->save();
+
             return redirect('/');
         } else {
             return redirect('/login');
@@ -67,6 +78,15 @@ class ProductController extends Controller
     function removeCart($id)
     {
         Cart::destroy($id);
+        $orders = Order::get();
+        $orderByCartId = [];
+        foreach ($orders as $index => $order) {
+            if ($order->cart_id == $id) {
+                $orderByCartId[] = $order;
+            }
+        }
+
+        Order::destroy($orderByCartId[0]->id);
 
         return redirect('cartlist');
     }
@@ -101,5 +121,15 @@ class ProductController extends Controller
         $request->input();
 
         return redirect('/');
+    }
+    function myOrders()
+    { 
+        $userId = Session::get('user')['id'];
+        $orders= DB::table('orders')
+            ->join('products', 'orders.product_id', '=', 'products.id')
+            ->where('orders.user_id', $userId)
+            ->get();
+
+        return view('myorders', ['orders' => $orders]);
     }
 }
