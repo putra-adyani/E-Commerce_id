@@ -19,23 +19,23 @@
                     <ul class="list-group list-group-horizontal">
                         <li class="list-group m-1">
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                Open Cart
+                                Buy Now
                             </button>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">My Order</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form action="/add_to_cart" method="POST">
+        <form action="/buy_now" method="POST">
             @csrf
             <input type="hidden" name="product_id" value="{{ $product['id'] }}">
             <div class="mb-3">
                 <label for="status" class="form-label">Status</label>
-                <input type="text" class="form-control" id="status" name="status">
+                <input type="text" class="form-control" id="status" name="status" value="Pending" disabled="true">
             </div>
             <div class="mb-3">
                 <label for="payment_method" class="form-label">Payment Method</label>
@@ -47,7 +47,7 @@
             </div>
             <div class="mb-3">
                 <label for="payment_status" class="form-label">Payment Status</label>
-                <input type="text" class="form-control" id="payment_status" name="payment_status">
+                <input type="text" class="form-control" id="payment_status" name="payment_status" value="Pending" disabled="true">
             </div>
             <div class="mb-3">
                 <label for="address" class="form-label">Address</label>
@@ -55,7 +55,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button class="btn btn-primary">Add to Cart</button>
+                <button class="btn btn-primary">Buy Now</button>
             </div>
         </form>
       </div>
@@ -64,7 +64,11 @@
 </div>
                         </li>
                         <li class="list-group m-1">
-                            <button class="btn btn-warning">Buy Now</button>
+                            <form action="/add_to_cart" method="POST">
+                                @csrf
+                                <input type="hidden" name="product_id" value="{{ $product['id'] }}">
+                                <button class="btn btn-warning">Add To Cart</button>
+                            </form>
                         </li>
                         <li class="list-group m-1">
                             <a href="/" class="btn btn-danger" role="button">back</a>

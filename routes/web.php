@@ -30,6 +30,7 @@ Route::post('/register', [UserController::class, 'register']);
 Route::get('/', [ProductController::class, 'index']);
 Route::get('detail/{id}', [ProductController::class, 'detail']);
 Route::get('search', [ProductController::class, 'search']);
+Route::post('/buy_now', [ProductController::class, 'buyNow']);
 Route::post('/add_to_cart', [ProductController::class, 'addToCart']);
 Route::get('cartlist', [ProductController::class, 'cartList']);
 Route::get('removecart/{id}', [ProductController::class, 'removeCart']);

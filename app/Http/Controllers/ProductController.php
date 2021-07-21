@@ -41,10 +41,23 @@ class ProductController extends Controller
             $cart->product_id = $request->product_id;
             $cart->save();
 
+            return redirect('/');
+        } else {
+            return redirect('/login');
+        }
+    }
+
+    function buyNow(Request $request){
+        if ($request->session()->has('user')) {
+            $cart = new Cart;
+            $cart->user_id = $request->session()->get('user')['id'];
+            $cart->product_id = $request->product_id;
+            $cart->save();
+
             $order = new Order;
             $order->user_id = $request->session()->get('user')['id'];
             $order->product_id = $request->product_id;
-            $order->cart_id = $cart->id;
+            // $order->cart_id = $cart->id;
             $order->status = $request->status;
             $order->payment_method = $request->payment_method;
             $order->payment_status = $request->payment_status;
@@ -77,7 +90,6 @@ class ProductController extends Controller
 
     function removeCart($id)
     {
-        Cart::destroy($id);
         $orders = Order::get();
         $orderByCartId = [];
         foreach ($orders as $index => $order) {
@@ -85,7 +97,8 @@ class ProductController extends Controller
                 $orderByCartId[] = $order;
             }
         }
-
+        
+        Cart::destroy($id);
         Order::destroy($orderByCartId[0]->id);
 
         return redirect('cartlist');
